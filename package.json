@@ -1,0 +1,15 @@
+{
+  "name": "restapi_mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "SDN301_ArtworkSharingPlatform"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -15,8 +15,8 @@ module.exports = {
 
 	createNewUser: async (req, res, next) => {
 		try {
-			const product = new User(req.body);
-			const result = await product.save();
+			const user = new User(req.body);
+			const result = await user.save();
 			res.send(result);
 		} catch (error) {
 			console.log(error.message);
@@ -31,11 +31,11 @@ module.exports = {
 	findUserById: async (req, res, next) => {
 		const id = req.params.id;
 		try {
-			const product = await User.findById(id);
-			if (!product) {
+			const user = await User.findById(id);
+			if (!user) {
 				throw createError(404, 'User does not exist.');
 			}
-			res.send(product);
+			res.send(user);
 		} catch (error) {
 			console.log(error.message);
 			if (error instanceof mongoose.CastError) {

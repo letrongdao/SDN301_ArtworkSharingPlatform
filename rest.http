@@ -1,0 +1,30 @@
+### Get orders
+GET http://localhost:3000/orders
+
+### Post an order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "orderId": "or123456789",
+    "userId": "us123456789",
+    "total": 51.99,
+    "createTime": "2024-01-26T10:30:00.000Z"
+}
+
+### Get an order by id
+GET http://localhost:3000/orders/or12345446
+
+### Update an order by id
+PATCH http://localhost:3000/orders/or123456789
+Content-Type: application/json
+
+{
+    "total": 26.99
+}
+
+### Delete an order by id
+DELETE http://localhost:3000/orders/65b3c14239ed769db0dea366
+
+### 404
+GET http://localhost:3000/abcabc

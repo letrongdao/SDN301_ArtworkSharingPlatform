@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    userId: {
-      type: Number,
-      required: true
-    },
     email: {
       type: String,
       required: true
@@ -23,23 +19,21 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    createdTime: {
-      type: Date,
-      required: true
-    },
     numOfFollower: {
       type: Number,
       required: true
     },
     avatar: {
       type: String,
-      required: false
+      required: true
     },
     status: {
       type: Boolean,
       required: true
     }
-  });
+  }, {
+  timestamps: true
+});
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;

@@ -1,14 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const createError = require('http-errors')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://vonhatnam:vonhatnam@cluster0.u60utzk.mongodb.net/Artwork_Platform')
-  .then(() => {
-    console.log('MongoDB connected...');
-  })
+app.use(express.json())
 
-const userRouter = require('./routes/userRouter');
+require('./initDB.js')()
+
+const userRouter = require('./routes/userRouter.js');
 app.use('/users', userRouter);
 
 app.use((req, res, next) => {
@@ -25,8 +25,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log('Server started on port ' + PORT + '...');
-});
+app.listen(5000, () => {
+  console.log('Server started on port 5000')
+})

@@ -1,7 +1,7 @@
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 
-const User = require('../models/user');
+const User = require('../models/user.js');
 
 module.exports = {
 	getAllUsers: async (req, res, next) => {
@@ -23,7 +23,7 @@ module.exports = {
 			if (error.name === 'ValidationError') {
 				next(createError(422, error.message));
 				return;
-			}
+			}	
 			next(error);
 		}
 	},

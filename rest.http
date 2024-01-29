@@ -1,0 +1,16 @@
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{    
+  "userId": 1,
+  "email": "user1@gmail.com",
+  "password": "1234",
+  "nickname": "Ethan",
+  "role": "user",
+  "numOfFollower": 5,
+  "avatar": "",
+  "status": true
+}
+
+###
+GET http://localhost:5000/users

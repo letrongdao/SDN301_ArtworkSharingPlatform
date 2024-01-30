@@ -1,18 +1,40 @@
-const http = require('http')
+const express = require('express')
+const mongoose = require('mongoose')
+const createError = require('http-errors')
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/') {
-        res.write('You are on Home page')
-        res.end()
-    } else if (req.url === '/another'){
-        res.write("I am another route...")
-        res.end()
-    } else {
-        res.write("I am listening...")
-        res.end()
-    }
+const app = express()
+
+app.use(express.json())
+
+require('./initDB')()
+
+app.all('/test', (req, res) => {
+    // console.log(req.query)
+    // console.log(req.query.text)
+    // res.send(req.query)
+    // console.log(req.params)
+    // res.send(req.params)
+    console.log(req.body)
+    res.send(req.body)
 })
 
-server.listen(3000, () => {
-    console.log('Server started on port 3000...')
+const MessageRoute = require('./routes/messageRouter.js')
+app.use('/message', MessageRoute)
+
+app.use((req, res, next) => {
+    next(createError(404, "Not found"))
+})
+
+app.use((err, req, res, next) => {
+    res.status(err.status || 500)
+    res.send({
+        error: {
+            status: err.status || 500,
+            message: err.message
+        }
+    })
+})
+
+app.listen(8080, () => {
+    console.log('Server started on port 8080')
 })

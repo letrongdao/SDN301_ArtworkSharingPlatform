@@ -19,7 +19,9 @@ app.all('/test', (req,res) => {
 })
 
 const OrderRoute = require('./Routes/Order.route')
+const OrderItemRoute = require('./Routes/OrderItem.route')
 app.use('/orders', OrderRoute)
+app.use('/orderitems', OrderItemRoute)
 
 app.use((req,res,next) => {
     next(createError(404, "Not found"))

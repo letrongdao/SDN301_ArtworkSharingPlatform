@@ -21,6 +21,21 @@ app.all('/test', (req, res) => {
 const MessageRoute = require('./routes/messageRouter.js')
 app.use('/message', MessageRoute)
 
+const userRouter = require('./routes/userRouter.js');
+app.use('/users', userRouter);
+
+const CommentRoute = require('./routes/commentRouter.js')
+app.use('/comments', CommentRoute)
+
+const artworkRouter = require("./routes/artworkRouter.js");
+app.use("/artwork", artworkRouter);
+
+const OrderRoute = require('./routes/orderRouter.js')
+app.use('/orders', OrderRoute)
+
+const ConversationRoute = require('./routes/conversationRouter.js')
+app.use('/conversation', ConversationRoute)
+
 app.use((req, res, next) => {
     next(createError(404, "Not found"))
 })

@@ -10,10 +10,10 @@ router.get('/getMessage', MessageController.getAllMessages)
 
 router.post('/postMessage', MessageController.postNewMessage)
 
-router.get('getMessageById/:id', MessageController.findMessageById)
+router.get('/getMessageById/:id', MessageController.findMessageById)
 
-router.patch('updateMessage/:id', MessageController.updateMessage)
+router.patch('/updateMessage/:id', MessageController.updateMessage)
 
-router.delete('deleteMessage/:id', MessageController.deleteMessage)
+router.delete('/deleteMessage/:id', MessageController.deleteMessage)
 
 module.exports = router
